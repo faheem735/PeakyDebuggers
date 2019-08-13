@@ -34,40 +34,44 @@ public class PayFineControl {
 	}
 
 
-	public void Card_Swiped(int memberId) {
-		if (!StAtE.equals(CONTROL_STATE.READY)) {
+	// Changed Card_Swiped to cardSwiped 
+	public void cardSwiped(int memberId) {
+		// corrected variables names
+		if (!state.equals(controlState.READY)) {
 			throw new RuntimeException("PayFineControl: cannot call cardSwiped except in READY state");
 		}	
-		MeMbEr = LiBrArY.MEMBER(memberId);
+		MeMbEr = library.MEMBER(memberId);
 		
-		if (MeMbEr == null) {
-			Ui.DiSplAY("Invalid Member Id");
+		if (member == null) {
+			UI.display("Invalid Member Id");
 			return;
 		}
-		Ui.DiSplAY(MeMbEr.toString());
-		Ui.Set_State(PayFineUI.UI_STATE.PAYING);
-		StAtE = CONTROL_STATE.PAYING;
+		// adjusting variable names
+		UI.DiSplAY(MeMbEr.toString());
+		UI.Set_State(PayFineUI.UI_STATE.PAYING);
+		state = controlState.PAYING;
 	}
 	
 	
-	public void CaNcEl() {
-		Ui.Set_State(PayFineUI.UI_STATE.CANCELLED);
-		StAtE = CONTROL_STATE.CANCELLED;
+	// changed function name to lower case
+	public void cancel() {
+		UI.setState(PayFineUI.UI_STATE.CANCELLED);
+		state = controlState.CANCELLED;
 	}
 
 
-	public double PaY_FiNe(double AmOuNt) {
-		if (!StAtE.equals(CONTROL_STATE.PAYING)) {
+	public double payFine(double amount) {
+		if (!state.equals(controlState.PAYING)) {
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
 		}	
-		double ChAnGe = MeMbEr.Pay_Fine(AmOuNt);
+		double change = member.Pay_Fine(amount);
 		if (ChAnGe > 0) {
-			Ui.DiSplAY(String.format("Change: $%.2f", ChAnGe));
+			UI.display(String.format("Change: $%.2f", change));
 		}
-		Ui.DiSplAY(MeMbEr.toString());
-		Ui.Set_State(PayFineUI.UI_STATE.COMPLETED);
-		StAtE = CONTROL_STATE.COMPLETED;
-		return ChAnGe;
+		UI.display(member.toString());
+		UI.setState(PayFineUI.UI_STATE.COMPLETED);
+		state = controlState.COMPLETED; // changed variables notation
+		return change; 
 	}
 	
 
