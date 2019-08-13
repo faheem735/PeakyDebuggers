@@ -1,7 +1,7 @@
 public class PayFineControl {
 	
 	// Changed Ui to UI
-	private PayFineUI Ui;
+	private PayFineUI UI;
 	// Changed CONTROL_STATE to controlState
 	private enum controlState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
 	// Changed CONTROL_STATE StAtE to controlState state
@@ -14,18 +14,23 @@ public class PayFineControl {
 
 
 	public PayFineControl() {
-		this.LiBrArY = LiBrArY.INSTANCE();
-		StAtE = CONTROL_STATE.INITIALISED;
+		this.library = library.INSTANCE(); // changed LiBrArY to library because the name was changed above
+		state = controlState.INITIALISED; // corrected variables names according to above names
 	}
 	
 	
-	public void Set_UI(PayFineUI ui) {
-		if (!StAtE.equals(CONTROL_STATE.INITIALISED)) {
+	// Changed Set_UI to setUI 
+	public void setUI(PayFineUI ui) {
+		// Changed StAtE with state and CONTROL_STATE to controlState
+		if (!state.equals(controlState.INITIALISED)) {
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
-		}	
-		this.Ui = ui;
-		ui.Set_State(PayFineUI.UI_STATE.READY);
-		StAtE = CONTROL_STATE.READY;		
+		}
+		// Chaned Ui to UI
+		this.UI = ui;
+		// Changed Set_State to setState
+		ui.setState(PayFineUI.UI_STATE.READY);
+		// corrected vaiables names
+		state = controlState.READY;		
 	}
 
 
