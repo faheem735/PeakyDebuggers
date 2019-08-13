@@ -4,10 +4,10 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class book implements Serializable {
 	
-	private String TITLE;
-	private String AUTHOR;
-	private String CALLNO;
-	private int ID;
+	private String title; // changes variable names to title from TITLE - sudeep-13/8(13:00)
+	private String author; // changes variable names to author from AUTHOR
+	private String phoneNo; // changes variable names to phoneNo from CALLNO
+	private int bookId;     // changes variable names to bookId from ID
 	
 	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private STATE State;
