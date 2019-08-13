@@ -1,11 +1,16 @@
 public class PayFineControl {
 	
+	// Changed Ui to UI
 	private PayFineUI Ui;
-	private enum CONTROL_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
-	private CONTROL_STATE StAtE;
+	// Changed CONTROL_STATE to controlState
+	private enum controlState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
+	// Changed CONTROL_STATE StAtE to controlState state
+	private controlState state;
 	
-	private library LiBrArY;
-	private member MeMbEr;
+	// Changed variable LiBrAry to library
+	private library library;
+	// Changed MeMber to member
+	private member member;
 
 
 	public PayFineControl() {
