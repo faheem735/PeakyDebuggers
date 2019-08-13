@@ -17,6 +17,7 @@ public class member implements Serializable {
 	private Map<Integer, loan> LNS;
 
 	
+	// Function to Assign passed variables to their respective objects
 	public member(String lastName, String firstName, String email, int phoneNo, int id) {
 		this.LN = lastName;
 		this.FN = firstName;
@@ -28,6 +29,7 @@ public class member implements Serializable {
 	}
 
 	
+	// Function to make a string of all the data about a person
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Member:  ").append(ID).append("\n")
