@@ -1,26 +1,26 @@
 public class ReturnBookControl {
 
-	private ReturnBookUI Ui;
-	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
-	private CONTROL_STATE sTaTe;
+	private ReturnBookUI ui; // Changed variable name
+	private enum controlState { INITIALISED, READY, INSPECTING }; // Changed variable name
+	private controlState state; // Changed variable name
 	
-	private library lIbRaRy;
-	private loan CurrENT_loan;
+	private library library; // Changed variable name
+	private loan currentLoan; // Changed variable name
 	
 
 	public ReturnBookControl() {
-		this.lIbRaRy = lIbRaRy.INSTANCE();
-		sTaTe = CONTROL_STATE.INITIALISED;
+		this.library = library.INSTANCE(); // fixed variable names
+		state = controlState.INITIALISED; // made correction to the variables names
 	}
 	
 	
-	public void Set_UI(ReturnBookUI ui) {
-		if (!sTaTe.equals(CONTROL_STATE.INITIALISED)) {
+	public void setUi(ReturnBookUI ui) { // changed function name
+		if (!state.equals(controlState.INITIALISED)) { // fixed variable names
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		}	
-		this.Ui = ui;
-		ui.Set_State(ReturnBookUI.UI_STATE.READY);
-		sTaTe = CONTROL_STATE.READY;		
+		this.ui = ui;
+		ui.setState(ReturnBookUI.UI_STATE.READY);
+		state = controlState.READY;		
 	}
 
 
