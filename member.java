@@ -7,17 +7,16 @@ import java.util.Map;
 @SuppressWarnings("serial")
 public class member implements Serializable {
 
-	private String LN; // Last Name
-	private String FN; // First Name
-	private String EM; // Email
-	private int PN; // Phone Number
-	private int ID; // ID
-	private double FINES; 
+	private String LN;
+	private String FN;
+	private String EM;
+	private int PN;
+	private int ID;
+	private double FINES;
 	
 	private Map<Integer, loan> LNS;
 
 	
-	// Function to Assign passed variables to their respective objects
 	public member(String lastName, String firstName, String email, int phoneNo, int id) {
 		this.LN = lastName;
 		this.FN = firstName;
@@ -29,7 +28,6 @@ public class member implements Serializable {
 	}
 
 	
-	// Function to make a string of all the data about a person
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Member:  ").append(ID).append("\n")
@@ -40,66 +38,57 @@ public class member implements Serializable {
 		  .append(String.format("  Fines Owed :  $%.2f", FINES))
 		  .append("\n");
 		
-		// changing loAn to loanValues in the for loop
-		for (loan loanValues : LNS.values()) { 
-			sb.append(loanValues).append("\n"); // replaced loAn with loanValues
+		for (loan LoAn : LNS.values()) {
+			sb.append(LoAn).append("\n");
 		}		  
 		return sb.toString();
 	}
 
 	
-	// Changing GeT_ID to getID
-	public int getID() {
+	public int GeT_ID() {
 		return ID;
 	}
 
 	
-	// Changed Get_LoAns() with getLoans()
-	public List<loan> getLoans() {
+	public List<loan> GeT_LoAnS() {
 		return new ArrayList<loan>(LNS.values());
 	}
 
 	
-	// Changed Number_Of_Current_Loans with NumberOfCurrentLoans
-	public int NumberOfCurrentLoans() {
+	public int Number_Of_Current_Loans() {
 		return LNS.size();
 	}
 
 	
-	// changed Fines_OwEd with finesOwed
-	public double finesOwed() {
+	public double Fines_OwEd() {
 		return FINES;
 	}
 
 	
-	// Changed Take_Out_Loan to TakeOutLoan
-	public void TakeOutLoan(loan loan) {
+	public void Take_Out_Loan(loan loan) {
 		if (!LNS.containsKey(loan.ID())) {
 			LNS.put(loan.ID(), loan);
 		}
 		else {
-			throw new RuntimeException("Duplicate loan added to member"); // thow exception
+			throw new RuntimeException("Duplicate loan added to member");
 		}		
 	}
 
-	// Changed Get_LastName to getLastName
-	public String getLastName() {
+	
+	public String Get_LastName() {
 		return LN;
 	}
 
 	
-	// Changed Get_FirstName to getFirstName
-	public String getFirstName() {
+	public String Get_FirstName() {
 		return FN;
 	}
 
 
-	// Changed Add_Fine to addFine
-	public void addFine(double fine) {
+	public void Add_Fine(double fine) {
 		FINES += fine;
 	}
 	
-	// Changed Pay_Fine to payFine
 	public double Pay_Fine(double AmOuNt) {
 		if (AmOuNt < 0) {
 			throw new RuntimeException("Member.payFine: amount must be positive");
@@ -116,8 +105,7 @@ public class member implements Serializable {
 	}
 
 
-	// Changed dIsChArGeLoAn to dischargeLoan
-	public void dischargeLoan(loan LoAn) {
+	public void dIsChArGeLoAn(loan LoAn) {
 		if (LNS.containsKey(LoAn.ID())) {
 			LNS.remove(LoAn.ID());
 		}
