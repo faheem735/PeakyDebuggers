@@ -71,7 +71,7 @@ public class PayFineControl {
 		UI.display(member.toString());
 		UI.setState(PayFineUI.UI_STATE.COMPLETED);
 		state = controlState.COMPLETED; // changed variables notation
-		return change; 
+		return change;  
 	}
 	
 
