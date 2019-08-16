@@ -3,11 +3,11 @@ import java.util.Scanner;
 
 public class FixBookUI {
 
-	public static enum UI_STATE { INITIALISED, READY, FIXING, COMPLETED };
+	public static enum UserInterfaceState { INITIALISED, READY, FIXING, COMPLETED };//Changed UI_STATE to UserInterfaceState-Zeeshan 13/8
 
-	private FixBookControl CoNtRoL;
+	private FixBookControl control;//Changed CoNtRoL to control-Zeeshan 13/8 
 	private Scanner input;
-	private UI_STATE StAtE;
+	private UserInterfaceState state;////Changed UI_STATE to UserInterfaceState and sTate to state-Zeeshan 13/8
 
 	
 	public FixBookUI(FixBookControl control) {
