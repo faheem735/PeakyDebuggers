@@ -1,11 +1,11 @@
 public class FixBookControl {
 	
-	private FixBookUI UI;
-	private enum CONTROL_STATE { INITIALISED, READY, FIXING };
-	private CONTROL_STATE StAtE;
+	private FixBookUI userInterface;// Changed UI to userInterface - Zeeshan 13/8
+	private enum ControlState { INITIALISED, READY, FIXING };//Changed CONTROL_STATE to ControlState -Zeeshan 13/8
+	private ControlState state;//Changed CONTROL_STATE to ControlState and StAtE to state as per guidelines- Zeeshan 13/8
 	
-	private library LIB;
-	private book Cur_Book;
+	private Library libraryId;//Changed library class name to Library  and  LIB to  library-Zeeshan 13/8
+	private book currentBook;// Changed Class name book to Book and CUR_Book to currentBook-Zeeshan 13/8
 
 
 	public FixBookControl() {
