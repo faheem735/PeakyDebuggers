@@ -47,12 +47,12 @@ public class Calendar {
 		}	
 	}
 
-	public synchronized Date Due_Date(int loanPeriod) {
-		Date NoW = Date();
+	public synchronized Date dueDate(int loanPeriod) { // change made Due_Date to dueDate
+		Date now = Date(); // Now to now
 		calendar.add(java.util.Calendar.DATE, loanPeriod);
-		Date DuEdAtE = calendar.getTime();
+		Date dueDate = calendar.getTime(); // change to dueDate from DuEdAte
 		calendar.setTime(NoW);
-		return DuEdAtE;
+		return dueDate;
 	}
 	
 	public synchronized long Get_Days_Difference(Date targetDate) {
