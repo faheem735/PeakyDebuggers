@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-public class BorrowBookUI {
+public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 	
 	public static enum UserInterfaceState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };// change UI_STATE to UserInterfaceState
 	// changes all the variables to the lowercase and camelback
