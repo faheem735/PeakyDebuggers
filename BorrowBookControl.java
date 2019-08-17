@@ -3,9 +3,9 @@ import java.util.List;
 
 public class BorrowBookControl {
 	
-	private BorrowBookUi ui; // changes from BorrowBookUI to BorrowBookUi 
+	private BorrowBookUi userInterface; // changes from BorrowBookUI to BorrowBookUi 
 	
-	private Library LIBRARY;
+	private Library liberary; // change on the name
 	private member M;
 	private enum ControlState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };// changes the enum name from CONTROL_STATE to ControlState.
 	private ControlState State;
@@ -21,14 +21,14 @@ public class BorrowBookControl {
 	}
 	
 
-	public void setUi(BorrowBookUi ui) { // change made on setuI to setUi and BorrowBookUI to BorrowBookUi and UI to ui
+	public void setUi(BorrowBookUi userInterface) { // change made on setuI to setUi and BorrowBookUI to BorrowBookUi and UI to userInterface
 	
 	// changes made on CONTROL_STATE to ControlState
 		if (!State.equals(ControlState.INITIALISED)) 
 			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
-		// UI changes to ui on all	
-		this.ui = ui;
-		ui.Set_State(BorrowBookUI.UI_STATE.READY);
+		// UI changes to userInterface on all	
+		this.userInterface = userInterface;
+		userInterface.Set_State(BorrowBookUI.UI_STATE.READY);
 		State = ControState.READY;		
 	}
 
@@ -39,17 +39,17 @@ public class BorrowBookControl {
 			
 		M = LIBRARY.MEMBER(MEMMER_ID);
 		if (M == null) {
-			ui.Display("Invalid memberId");
+			userInterface.Display("Invalid memberId");
 			return;
 		}
 		if (LIBRARY.MEMBER_CAN_BORROW(M)) {
 			PENDING = new ArrayList<>();
-			ui.Set_State(BorrowBookUI.UI_STATE.SCANNING);
+			userInterface.Set_State(BorrowBookUI.UI_STATE.SCANNING);
 			State = ControState.SCANNING; }
 		else 
 		{
-			ui.Display("Member cannot borrow at this time");
-			ui.Set_State(BorrowBookUI.UI_STATE.RESTRICTED); }}
+			userInterface.Display("Member cannot borrow at this time");
+			userInterface.Set_State(BorrowBookUI.UI_STATE.RESTRICTED); }}
 	
 	
 	public void Scanned(int bookId) {
@@ -59,19 +59,19 @@ public class BorrowBookControl {
 		}	
 		BOOK = LIBRARY.Book(bookId);
 		if (BOOK == null) {
-			ui.Display("Invalid bookId");
+			userInterface.Display("Invalid bookId");
 			return;
 		}
 		if (!BOOK.AVAILABLE()) {
-			ui.Display("Book cannot be borrowed");
+			userInterface.Display("Book cannot be borrowed");
 			return;
 		}
 		PENDING.add(BOOK);
 		for (book B : PENDING) {
-			ui.Display(B.toString());
+			userInterface.Display(B.toString());
 		}
 		if (LIBRARY.Loans_Remaining_For_Member(M) - PENDING.size() == 0) {
-			ui.Display("Loan limit reached");
+			userInterface.Display("Loan limit reached");
 			Complete();
 		}
 	}
@@ -82,12 +82,12 @@ public class BorrowBookControl {
 			cancel();
 		}
 		else {
-			ui.Display("\nFinal Borrowing List");
+			userInterface.Display("\nFinal Borrowing List");
 			for (book B : PENDING) {
-				ui.Display(B.toString());
+				userInterface.Display(B.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
-			ui.Set_State(BorrowBookUI.UI_STATE.FINALISING);
+			userInterface.Set_State(BorrowBookUI.UI_STATE.FINALISING);
 			State = ControState.FINALISING;
 		}
 	}
@@ -101,17 +101,17 @@ public class BorrowBookControl {
 			loan LOAN = LIBRARY.ISSUE_LAON(B, M);
 			COMPLETED.add(LOAN);			
 		}
-		ui.Display("Completed Loan Slip");
+		userInterface.Display("Completed Loan Slip");
 		for (loan LOAN : COMPLETED) {
-			ui.Display(LOAN.toString());
+			userInterface.Display(LOAN.toString());
 		}
-		ui.Set_State(BorrowBookUI.UI_STATE.COMPLETED);
+		userInterface.Set_State(BorrowBookUI.UI_STATE.COMPLETED);
 		State = ControState.COMPLETED;
 	}
 
 	
 	public void cancel() {
-		ui.Set_State(BorrowBookUI.UI_STATE.CANCELLED);
+		userInterface.Set_State(BorrowBookUI.UI_STATE.CANCELLED);
 		State = ControState.CANCELLED;
 	}
 	
