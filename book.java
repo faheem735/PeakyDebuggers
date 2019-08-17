@@ -2,28 +2,28 @@ import java.io.Serializable;
 
 
 @SuppressWarnings("serial")
-public class book implements Serializable {
+public class Book implements Serializable {
 	
 	private String title; // changes variable names to title from TITLE - sudeep-13/8(13:00)
 	private String author; // changes variable names to author from AUTHOR
 	private String phoneNo; // changes variable names to phoneNo from CALLNO
-	private int bookId;     // changes variable names to bookId from ID
+	private int bookId;     // changes variable names to id from bookId
 	
-	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
-	private STATE State;
+	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED }; //change STATE to State
+	private STATE state; // changes from State to state - sudeep- 13/8 (13:00)
 	
-	
-	public book(String author, String title, String callNo, int id) {
-		this.AUTHOR = author;
-		this.TITLE = title;
-		this.CALLNO = callNo;
-		this.ID = id;
-		this.State = STATE.AVAILABLE;
+	// changed all the upper case  variables to lowercase variable. 
+	public book(String author, String title, String phoneNO, int bookId) {
+		this.author = author;
+		this.title = title;
+		this.phoneNo = callNo;
+		this.bookId = bookId;
+		this.State = State.AVAILABLE;
 	}
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Book: ").append(ID).append("\n")
+		sb.append("Book: ").append(bookId).append("\n")
 		  .append("  Title:  ").append(TITLE).append("\n")
 		  .append("  Author: ").append(AUTHOR).append("\n")
 		  .append("  CallNo: ").append(CALLNO).append("\n")
@@ -33,7 +33,7 @@ public class book implements Serializable {
 	}
 
 	public Integer ID() {
-		return ID;
+		return bookId;
 	}
 
 	public String TITLE() {
