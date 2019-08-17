@@ -66,13 +66,13 @@ public class Loan implements Serializable { //Changed Class name to Loan-Zeeshan
 	}
 
 
-	public book Book() {
-		return B;
+	public book getBook() {//Changed function name to getBook-Zeeshan 13/8
+		return book;//Changed varibale name to book-Zeesahn 13/8
 	}
 
 
-	public void DiScHaRgE() {
-		state = LOAN_STATE.DISCHARGED;		
+	public void discharge() {//Changed function anme to discharge-Zeeshan 13/8
+		state = loanState.DISCHARGED;		//Changed varibale name to loanState-Zeeshan 13/8
 	}
 
 }
