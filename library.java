@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
-public class library implements Serializable {
+public class Library implements Serializable {//Changed Class name from library to Library-Zeeshan 13/8
 	
 	private static final String libraryFile = "library.obj";
 	private static final int loanLimit = 2;
@@ -23,17 +23,17 @@ public class library implements Serializable {
 	private static final double maxFinesOwed = 1.0;
 	private static final double damageFee = 2.0;
 	
-	private static library SeLf;
-	private int BOOK_ID;
-	private int MEMBER_ID;
-	private int LOAN_ID;
-	private Date LOAN_DATE;
+	private static library self;//Changed self from Self-Zeeshan 13/8
+	private int bookId;//Changed BOOK-ID from bookId-Zeeshan 13/8
+	private int memberId;//Changed MEMBER_ID to memberId-Zeeshan 13/8
+	private int loanId;//Changed LOAN_ID to loanId-Zeeshan 13/8
+	private Date loanDate;//Changed LOAN_DATE  to loanDate-Zeeshan 13/8
 	
-	private Map<Integer, book> CATALOG;
-	private Map<Integer, member> MEMBERS;
-	private Map<Integer, loan> LOANS;
-	private Map<Integer, loan> CURRENT_LOANS;
-	private Map<Integer, book> DAMAGED_BOOKS;
+	private Map<Integer, book> Catalog;//Changed CATALOG to Catlog-Zeeshan 13/8
+	private Map<Integer, member> Members;//Changed MEMBERS to Member-Zeeshan 13/8
+	private Map<Integer, loan> Loans;//Changed LOANS to Loans -Zeeshan 13/8
+	private Map<Integer, loan> Currentloans;//Changed CURRENT_LOANS TO Currentloans-Zeeshan 13/8
+	private Map<Integer, book> Damagedbooks;//Changed DAMAGED_BOOKS TO Damagedbooks-Zeeshan 13/8
 	
 
 	private library() {
