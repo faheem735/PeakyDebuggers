@@ -214,7 +214,7 @@ public class Main {
 	
 	
 	
-	private static void displayOutput(Object object) {
+	private static void displayOutput(Object object) {//Chanded function name to displayOUtput-Zeeshan 13/8
 		System.out.println(object);
 	}
 
