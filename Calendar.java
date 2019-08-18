@@ -22,7 +22,7 @@ public class Calendar {
 		calendar.add(java.util.Calendar.DATE, days);		
 	}
 	
-	public synchronized void Set_dATE(Date date) {
+	public synchronized void setDate(Date date) { // change to setDate from Set_dATE
 		try {
 			calendar.setTime(date);
 	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
@@ -34,7 +34,7 @@ public class Calendar {
 			throw new RuntimeException(e);
 		}	
 	}
-	public synchronized Date Date() {
+	public synchronized Date date() { // change to date from Date
 		try {
 	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
 	        calendar.set(java.util.Calendar.MINUTE, 0);  
@@ -55,7 +55,7 @@ public class Calendar {
 		return dueDate;
 	}
 	
-	public synchronized long Get_Days_Difference(Date targetDate) {
+	public synchronized long getDaysDifference(Date targetDate) {// from Get_Days_Difference to getDaysDifference
 		
 		long Diff_Millis = Date().getTime() - targetDate.getTime();
 	    long Diff_Days = TimeUnit.DAYS.convert(Diff_Millis, TimeUnit.MILLISECONDS);
