@@ -32,7 +32,7 @@ public class Book implements Serializable {
 		return sb.toString();
 	}
 
-	public Integer ID() {
+	public Integer bookId() {// ID ro bookId
 		return bookId;
 	}
 	// changes TITLE to title
@@ -47,12 +47,12 @@ public class Book implements Serializable {
 	}
 
 	
-	public boolean On_loan() {
+	public boolean onLoan() { // changes form On_loan to onLoan
 		return State == state.ON_LOAN;
 	}
 
 	
-	public boolean IS_Damaged() {
+	public boolean isDamaged() { // change from IS_Damaged to isDamaged
 		return State == state.DAMAGED;
 	}
 
