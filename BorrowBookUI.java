@@ -10,11 +10,11 @@ public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 	private UserInterfaceState state;
 
 	
-	public BorrowBookUI(BorrowBookControl control) {
-		this.CONTROL = control;
+	public borrowBookUi(BorrowBookControl control) {// BorrowbookUI to borrowBookUi
+		this.control = control; // CONTROL to control
 		input = new Scanner(System.in);
-		StaTe = UserInterfaceState.INITIALISED; // change UI_STATE to UserInterfaceState
-		control.setUI(this);
+		state = UserInterfaceState.INITIALISED; // change UI_STATE to UserInterfaceState
+		control.setUserInterface(this); // change to setUserInterface to ustUI
 	}
 
 	
@@ -47,13 +47,13 @@ public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 
 				
 			case READY:
-				String MEM_STR = input("Swipe member card (press <enter> to cancel): ");
-				if (MEM_STR.length() == 0) {
+				String memberCardNo = input("Swipe member card (press <enter> to cancel): "); // change made from MEM_STR to memberCardNo
+				if (memberCardNo.length() == 0) {
 					CONTROL.cancel();
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(MEM_STR).intValue();
+					int Member_ID = Integer.valueOf(memberCardNo).intValue();
 					CONTROL.Swiped(Member_ID);
 				}
 				catch (NumberFormatException e) {
