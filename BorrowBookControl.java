@@ -8,7 +8,7 @@ public class BorrowBookControl {
 	private Library liberary; // change on the name
 	private member M;
 	private enum ControlState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };// changes the enum name from CONTROL_STATE to ControlState.
-	private ControlState State;
+	private ControlState state;
 	
 	private List<book> pending; //changes to pending from PENDING
 	private List<loan> completed; // changes to completed from COMPLETED
@@ -17,25 +17,25 @@ public class BorrowBookControl {
 	
 	public BorrowBookControl() {
 		this.liberary = liberary.INSTANCE(); // changes the LIBERARY to liberary
-		State = ControlState.INITIALISED; //CONTROL_STATE to COntrolState changes made
+		state = ControlState.INITIALISED; //CONTROL_STATE to COntrolState changes made
 	}
 	
 
 	public void setUi(BorrowBookUi userInterface) { // change made on setuI to setUi and BorrowBookUI to BorrowBookUi and UI to userInterface
 	
 	// changes made on CONTROL_STATE to ControlState
-		if (!State.equals(ControlState.INITIALISED)) { // added { afer the if condition
+		if (!state.equals(ControlState.INITIALISED)) { // added { afer the if condition
 			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
 		// UI changes to userInterface on all	
 		this.userInterface = userInterface;
-		userInterface.Set_State(BorrowBookUI.UI_STATE.READY);
-		State = ControState.READY;	
+		userInterface.setState(BorrowBookUI.UI_STATE.READY);
+		state = ControState.READY;	
 		}		
 	}
 
 		
 	public void Swiped(int memberId) {// change MEMMER_ID to memberId
-		if (!State.equals(ControState.READY)) 
+		if (!state.equals(ControState.READY)) 
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 		// change LIBRARY to Library	
 		M = Library.member(memberId); // change MEMMER_ID to memberId
@@ -45,17 +45,17 @@ public class BorrowBookControl {
 		}
 		if (Library.MEMBER_CAN_BORROW(M)) {
 			PENDING = new ArrayList<>();
-			userInterface.Set_State(BorrowBookUI.UI_STATE.SCANNING);
-			State = ControState.SCANNING; }
+			userInterface.setState(BorrowBookUI.UI_STATE.SCANNING);
+			state = ControState.SCANNING; }
 		else 
 		{
 			userInterface.Display("Member cannot borrow at this time");
-			userInterface.Set_State(BorrowBookUI.UI_STATE.RESTRICTED); }}
+			userInterface.setState(BorrowBookUI.UI_STATE.RESTRICTED); }}
 	
 	
 	public void Scanned(int bookId) {
 		BOOK = null;
-		if (!State.equals(ControState.SCANNING)) {
+		if (!state.equals(ControState.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
 		}	
 		BOOK = Library.Book(bookId);
@@ -88,14 +88,14 @@ public class BorrowBookControl {
 				userInterface.Display(B.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
-			userInterface.Set_State(BorrowBookUI.UI_STATE.FINALISING);
-			State = ControState.FINALISING;
+			userInterface.setState(BorrowBookUI.UI_STATE.FINALISING);// changes made from Set_State to setState
+			state = ControState.FINALISING;
 		}
 	}
 
 
-	public void Commit_LOans() {
-		if (!State.equals(ControState.FINALISING)) {
+	public void commitLoans() { // change made on method name Commit_Loans
+		if (!state.equals(ControState.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
 		for (book B : PENDING) {
@@ -106,14 +106,14 @@ public class BorrowBookControl {
 		for (loan LOAN : COMPLETED) {
 			userInterface.Display(LOAN.toString());
 		}
-		userInterface.Set_State(BorrowBookUI.UI_STATE.COMPLETED);
-		State = ControState.COMPLETED;
+		userInterface.setState(BorrowBookUI.UI_STATE.COMPLETED); // changes made from Set_State to setState
+		state = ControState.COMPLETED;
 	}
 
 	
 	public void cancel() {
-		userInterface.Set_State(BorrowBookUI.UI_STATE.CANCELLED);
-		State = ControState.CANCELLED;
+		userInterface.SetState(BorrowBookUI.UI_STATE.CANCELLED); //// changes made from Set_State to setState
+		state = ControState.CANCELLED;
 	}
 	
 	
