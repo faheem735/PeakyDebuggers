@@ -75,12 +75,12 @@ public class BorrowBookControl {
 		}
 		if (Library.Loans_Remaining_For_Member(M) - pending.size() == 0) {
 			userInterface.Display("Loan limit reached");
-			Complete();
+			complete(); // changes to complete from Complete
 		}
 	}
 	
 	
-	public void Complete() {
+	public void complete() { // changes from Complete to complete
 		if (pending.size() == 0) {
 			cancel();
 		}
@@ -100,13 +100,14 @@ public class BorrowBookControl {
 		if (!state.equals(ControState.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
+		// changes from LOAN to loan
 		for (book B : pending) {
-			loan LOAN = Library.ISSUE_LAON(B, M);
-			COMPLETED.add(LOAN);			
+			loan loan = Library.issueLoan(B, M);  // ISSUE_LAON to issueLoan
+			COMPLETED.add(loan);			
 		}
 		userInterface.Display("Completed Loan Slip");
-		for (loan LOAN : COMPLETED) {
-			userInterface.Display(LOAN.toString());
+		for (loan loan : COMPLETED) {
+			userInterface.Display(loan.toString());
 		}
 		userInterface.setState(BorrowBookUI.userInterfaceState.COMPLETED); // changes made from Set_State to setState
 		state = ControState.COMPLETED;
