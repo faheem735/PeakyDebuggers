@@ -54,24 +54,26 @@ public class BorrowBookControl {
 	
 	
 	public void Scanned(int bookId) {
-		BOOK = null;
+		// changes made on all BOOK to book
+		book = null;
 		if (!state.equals(ControState.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
 		}	
-		BOOK = Library.Book(bookId);
-		if (BOOK == null) {
+		book = Library.Book(bookId);
+		if (book == null) {
 			userInterface.Display("Invalid bookId");
 			return;
 		}
-		if (!BOOK.AVAILABLE()) {
+		if (!book.AVAILABLE()) {
 			userInterface.Display("Book cannot be borrowed");
 			return;
 		}
-		PENDING.add(BOOK);
-		for (book B : PENDING) {
+		// changes  all PENDING to pending
+		pending.add(book);
+		for (book B : pending) {
 			userInterface.Display(B.toString());
 		}
-		if (Library.Loans_Remaining_For_Member(M) - PENDING.size() == 0) {
+		if (Library.Loans_Remaining_For_Member(M) - pending.size() == 0) {
 			userInterface.Display("Loan limit reached");
 			Complete();
 		}
@@ -79,12 +81,12 @@ public class BorrowBookControl {
 	
 	
 	public void Complete() {
-		if (PENDING.size() == 0) {
+		if (pending.size() == 0) {
 			cancel();
 		}
 		else {
 			userInterface.Display("\nFinal Borrowing List");
-			for (book B : PENDING) {
+			for (book B : pending) {
 				userInterface.Display(B.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
@@ -98,7 +100,7 @@ public class BorrowBookControl {
 		if (!state.equals(ControState.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
-		for (book B : PENDING) {
+		for (book B : pending) {
 			loan LOAN = Library.ISSUE_LAON(B, M);
 			COMPLETED.add(LOAN);			
 		}
