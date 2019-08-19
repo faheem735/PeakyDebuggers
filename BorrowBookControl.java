@@ -28,7 +28,7 @@ public class BorrowBookControl {
 			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
 		// UI changes to userInterface on all	
 		this.userInterface = userInterface;
-		userInterface.setState(BorrowBookUI.UI_STATE.READY);
+		userInterface.setState(BorrowBookUI.userInterfaceState.READY); // changes from UI_STATE to userInterfaceState
 		state = ControState.READY;	
 		}		
 	}
@@ -45,12 +45,12 @@ public class BorrowBookControl {
 		}
 		if (Library.MEMBER_CAN_BORROW(M)) {
 			PENDING = new ArrayList<>();
-			userInterface.setState(BorrowBookUI.UI_STATE.SCANNING);
+			userInterface.setState(BorrowBookUI.userInterfaceState.SCANNING);
 			state = ControState.SCANNING; }
 		else 
 		{
 			userInterface.Display("Member cannot borrow at this time");
-			userInterface.setState(BorrowBookUI.UI_STATE.RESTRICTED); }}
+			userInterface.setState(BorrowBookUI.userInterfaceState.RESTRICTED); }}
 	
 	
 	public void Scanned(int bookId) {
@@ -88,7 +88,7 @@ public class BorrowBookControl {
 				userInterface.Display(B.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
-			userInterface.setState(BorrowBookUI.UI_STATE.FINALISING);// changes made from Set_State to setState
+			userInterface.setState(BorrowBookUI.userInterfaceState.FINALISING);// changes made from Set_State to setState
 			state = ControState.FINALISING;
 		}
 	}
@@ -106,13 +106,13 @@ public class BorrowBookControl {
 		for (loan LOAN : COMPLETED) {
 			userInterface.Display(LOAN.toString());
 		}
-		userInterface.setState(BorrowBookUI.UI_STATE.COMPLETED); // changes made from Set_State to setState
+		userInterface.setState(BorrowBookUI.userInterfaceState.COMPLETED); // changes made from Set_State to setState
 		state = ControState.COMPLETED;
 	}
 
 	
 	public void cancel() {
-		userInterface.SetState(BorrowBookUI.UI_STATE.CANCELLED); //// changes made from Set_State to setState
+		userInterface.SetState(BorrowBookUI.userInterfaceState.CANCELLED); //// changes made from Set_State to setState
 		state = ControState.CANCELLED;
 	}
 	
