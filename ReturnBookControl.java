@@ -60,7 +60,7 @@ public class ReturnBookControl {
 		}	
 		ui.Set_State(ReturnBookUI.UI_STATE.COMPLETED); // Changed variable name
 	}
-
+ 
 
 	public void dischargeLoan(boolean isDamaged) {// Changed variable name
 		if (!state.equals(controlState.INSPECTING)) {
