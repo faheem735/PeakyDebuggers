@@ -38,7 +38,7 @@ public class BorrowBookControl {
 		if (!state.equals(ControState.READY)) 
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 		// change LIBRARY to Library	
-		member = Library.member(memberId); // change MEMMER_ID to memberId
+			member = Library.member(memberId); // change MEMMER_ID to memberId
 		if (member == null) { // change m to member
 			userInterface.display("Invalid memberId");
 			return;
@@ -73,7 +73,7 @@ public class BorrowBookControl {
 		for (book B : pending) {
 			userInterface.display(B.toString());
 		}
-		if (Library.Loans_Remaining_For_Member(M) - pending.size() == 0) {
+		if (Library.loanRemainingForMember(member) - pending.size() == 0) {// Loans_Remaining_For_Member to loanRemainingForMember by sudeep
 			userInterface.display("Loan limit reached");
 			complete(); // changes to complete from Complete by sudeep
 		}

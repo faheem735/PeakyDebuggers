@@ -49,12 +49,12 @@ public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 			case READY:
 				String memberCardNo = input("Swipe member card (press <enter> to cancel): "); // change made from MEM_STR to memberCardNo
 				if (memberCardNo.length() == 0) {
-					comtrol.cancel();
+					control.cancel();
 					break;
 				}
 				try {
 					int Member_ID = Integer.valueOf(memberCardNo).intValue();
-					comtrol.Swiped(Member_ID);
+					control.Swiped(Member_ID);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
@@ -64,19 +64,19 @@ public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 				
 			case RESTRICTED:
 				input("Press <any key> to cancel");
-				comtrol.cancel();
+				control.cancel();
 				break;
 			
 				
 			case SCANNING:
 				String bookScan = input("Scan Book (<enter> completes): "); //changes Book_Str to bookscan and changes made on further as well.
 				if (bookScan.length() == 0) {
-					comtrol.Complete();
+					control.Complete();
 					break;
 				}
 				try {
 					int bookId = Integer.valueOf(bookScan).intValue(); // changes from BID to bookId
-					comtrol.Scanned(bookId);
+					control.Scanned(bookId);
 					
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id");
@@ -87,10 +87,10 @@ public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 			case FINALISING:
 				String answer = input("Commit loans? (Y/N): "); // Ans to answer
 				if (answer.toUpperCase().equals("N")) {
-					comtrol.cancel();
+					control.cancel();
 					
 				} else {
-					comtrol.commitLoan(); //changes made on Commit_Loan to commitLoan
+					control.commitLoan(); //changes made on Commit_Loan to commitLoan
 					input("Press <any key> to complete ");
 				}
 				break;
