@@ -68,19 +68,19 @@ public class BorrowBookControl {
 			userInterface.Display("Book cannot be borrowed");
 			return;
 		}
-		// changes  all PENDING to pending
+		// changes  all PENDING to pending by sudeep
 		pending.add(book);
 		for (book B : pending) {
 			userInterface.Display(B.toString());
 		}
 		if (Library.Loans_Remaining_For_Member(M) - pending.size() == 0) {
 			userInterface.Display("Loan limit reached");
-			complete(); // changes to complete from Complete
+			complete(); // changes to complete from Complete by sudeep
 		}
 	}
 	
 	
-	public void complete() { // changes from Complete to complete
+	public void complete() { // changes from Complete to complete by sudeep
 		if (pending.size() == 0) {
 			cancel();
 		}
@@ -90,32 +90,32 @@ public class BorrowBookControl {
 				userInterface.Display(B.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
-			userInterface.setState(BorrowBookUI.userInterfaceState.FINALISING);// changes made from Set_State to setState
+			userInterface.setState(BorrowBookUI.userInterfaceState.FINALISING);// changes made from Set_State to setState by sudeep
 			state = ControState.FINALISING;
 		}
 	}
 
 
-	public void commitLoans() { // change made on method name Commit_Loans
+	public void commitLoans() { // change made on method name Commit_Loans by sudeep
 		if (!state.equals(ControState.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
 		// changes from LOAN to loan
 		for (book B : pending) {
-			loan loan = Library.issueLoan(B, M);  // ISSUE_LAON to issueLoan
+			loan loan = Library.issueLoan(B, M);  // ISSUE_LAON to issueLoan by sudeep
 			COMPLETED.add(loan);			
 		}
 		userInterface.Display("Completed Loan Slip");
 		for (loan loan : COMPLETED) {
 			userInterface.Display(loan.toString());
 		}
-		userInterface.setState(BorrowBookUI.userInterfaceState.COMPLETED); // changes made from Set_State to setState
+		userInterface.setState(BorrowBookUI.userInterfaceState.COMPLETED); // changes made from Set_State to setState by sudeep
 		state = ControState.COMPLETED;
 	}
 
 	
 	public void cancel() {
-		userInterface.SetState(BorrowBookUI.userInterfaceState.CANCELLED); //// changes made from Set_State to setState
+		userInterface.SetState(BorrowBookUI.userInterfaceState.CANCELLED); //// changes made from Set_State to setState by sudeep
 		state = ControState.CANCELLED;
 	}
 	
