@@ -23,7 +23,7 @@ public class Book implements Serializable {
 	
 	public String toString() {
 		StringBuilder stingBuilder = new stingbuilder();
-		stingbuilder.append("Book: ").append(bookId).append("\n")
+		stingbuilder.append("Book: ").append(bookId).append("\n")// added stringbuilder on .append by sudeep
 		stingbuilder.append("  Title:  ").append(title).append("\n")
 		stingbuilder.append("  Author: ").append(author).append("\n")
 		stingbuilder.append("  phoneNO: ").append(phoneNo).append("\n")
