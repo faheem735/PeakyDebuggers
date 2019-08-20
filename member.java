@@ -45,27 +45,27 @@ public class member implements Serializable {
 	}
 
 	
-	public int GeT_ID() {
+	public int getId() {
 		return id;
 	}
 
 	
-	public List<loan> GeT_LoAnS() {
+	public List<loan> getLoans() {
 		return new ArrayList<loan>(LNS.values());
 	}
 
 	
-	public int Number_Of_Current_Loans() {
+	public int numberOfCurrentLoans() {
 		return LNS.size();
 	}
 
 	
-	public double Fines_OwEd() {
-		return FINES;
+	public double finesOwned() {
+		return fines;
 	}
 
 	
-	public void Take_Out_Loan(loan loan) {
+	public void takeOutLoan(loan loan) {
 		if (!LNS.containsKey(loan.ID())) {
 			LNS.put(loan.ID(), loan);
 		}
@@ -75,21 +75,21 @@ public class member implements Serializable {
 	}
 
 	
-	public String Get_LastName() {
+	public String getLastName() {
 		return lastName;
 	}
 
 	
-	public String Get_FirstName() {
+	public String getFirstName() {
 		return firstName;
 	}
 
 
-	public void Add_Fine(double fine) {
+	public void addFine(double fine) {
 		fines += fine;
 	}
 	
-	public double Pay_Fine(double amount) {
+	public double payFine(double amount) {
 		if (amount < 0) {
 			throw new RuntimeException("Member.payFine: amount must be positive");
 		}
