@@ -25,10 +25,10 @@ public class Calendar {
 	public synchronized void setDate(Date date) { // change to setDate from Set_dATE
 		try {
 			calendar.setTime(date);
-	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        calendar.set(java.util.Calendar.MINUTE, 0);  
-	        calendar.set(java.util.Calendar.SECOND, 0);  
-	        calendar.set(java.util.Calendar.MILLISECOND, 0);
+	        calendar.set(java.util.Calendar.hourOfDay, 0);  // change HOUR_OF_DAY to hourOfDay
+	        calendar.set(java.util.Calendar.minute, 0);  // change made on MINUTE to minute
+	        calendar.set(java.util.Calendar.second, 0);  // change made on SECOND to second
+	        calendar.set(java.util.Calendar.millisecond, 0); // MILLISECOND to millisecond
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -36,10 +36,10 @@ public class Calendar {
 	}
 	public synchronized Date date() { // change to date from Date
 		try {
-	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        calendar.set(java.util.Calendar.MINUTE, 0);  
-	        calendar.set(java.util.Calendar.SECOND, 0);  
-	        calendar.set(java.util.Calendar.MILLISECOND, 0);
+	        calendar.set(java.util.Calendar.hourOfDay, 0);  
+	        calendar.set(java.util.Calendar.minute, 0);  
+	        calendar.set(java.util.Calendar.second, 0);  
+	        calendar.set(java.util.Calendar.millisecond, 0);
 			return calendar.getTime();
 		}
 		catch (Exception e) {
@@ -49,7 +49,7 @@ public class Calendar {
 
 	public synchronized Date dueDate(int loanPeriod) { // change made Due_Date to dueDate
 		Date now = Date(); // Now to now
-		calendar.add(java.util.Calendar.DATE, loanPeriod);
+		calendar.add(java.util.Calendar.date, loanPeriod); // change from DATE to date
 		Date dueDate = calendar.getTime(); // change to dueDate from DuEdAte
 		calendar.setTime(NoW);
 		return dueDate;
