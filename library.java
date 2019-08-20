@@ -161,7 +161,7 @@ public class Library implements Serializable {//Changed Class name from library 
 		if (member.NumberOfCurrentLoans() == loanLimit ) 
 			return false;
 				
-		if (member.Fines_OwEd() >= maxFinesOwed) 
+		if (member.finesOwned() >= maxFinesOwed)//changed finesOwned -zeeshan 
 			return false;
 				
 		for (loan loan : member.getLoans())//CHanged function name from Get_loans to getLoans-Zeeshan 13/8 
@@ -197,7 +197,7 @@ public class Library implements Serializable {//Changed Class name from library 
 
 	
 	public double CalculateOverDueFine(loan loan) {
-		if (loan.OVer_Due()) {
+		if (loan.overDue()) {//changed overdue zeeshan
 			long daysOverDue = Calendar.INSTANCE().getDaysDifference(loan.getDueDate());//Chnage function name to getDueDate() and getDaysDifference-Zeeshan 13/8
 			double fine = daysOverDue * finePerDay;
 			return fine;
