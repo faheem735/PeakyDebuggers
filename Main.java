@@ -52,7 +52,7 @@ public class Main {
 				output(b);
 			}
 						
-			MENU = getMenu();//Changed GET_MENU to getMEnu-Zeeshan 13/8
+			menu = getMenu();//Changed GET_MENU to getMEnu-Zeeshan 13/8
 			
 			boolean e = false;
 			
@@ -209,7 +209,7 @@ public class Main {
 
 	private static String getInput(String prompt) {//Changed function name to getInput
 		System.out.print(prompt);
-		return IN.nextLine();
+		return input.nextLine();//changed in to input-zeeshan
 	}
 	
 	
