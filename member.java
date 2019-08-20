@@ -30,12 +30,12 @@ public class member implements Serializable {
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Member:  ").append(ID).append("\n")
-		  .append("  Name:  ").append(LN).append(", ").append(FN).append("\n")
-		  .append("  Email: ").append(EM).append("\n")
-		  .append("  Phone: ").append(PN)
+		sb.append("Member:  ").append(id).append("\n")
+		  .append("  Name:  ").append(lastName).append(", ").append(firstName).append("\n")
+		  .append("  Email: ").append(email).append("\n")
+		  .append("  Phone: ").append(phoneNo)
 		  .append("\n")
-		  .append(String.format("  Fines Owed :  $%.2f", FINES))
+		  .append(String.format("  Fines Owed :  $%.2f", fines))
 		  .append("\n");
 		
 		for (loan LoAn : LNS.values()) {
@@ -46,7 +46,7 @@ public class member implements Serializable {
 
 	
 	public int GeT_ID() {
-		return ID;
+		return id;
 	}
 
 	
@@ -76,38 +76,38 @@ public class member implements Serializable {
 
 	
 	public String Get_LastName() {
-		return LN;
+		return lastName;
 	}
 
 	
 	public String Get_FirstName() {
-		return FN;
+		return firstName;
 	}
 
 
 	public void Add_Fine(double fine) {
-		FINES += fine;
+		fines += fine;
 	}
 	
-	public double Pay_Fine(double AmOuNt) {
-		if (AmOuNt < 0) {
+	public double Pay_Fine(double amount) {
+		if (amount < 0) {
 			throw new RuntimeException("Member.payFine: amount must be positive");
 		}
 		double change = 0;
-		if (AmOuNt > FINES) {
-			change = AmOuNt - FINES;
-			FINES = 0;
+		if (amount > fines) {
+			change = amount - fines;
+			fines = 0;
 		}
 		else {
-			FINES -= AmOuNt;
+			fines -= amount;
 		}
 		return change;
 	}
 
 
-	public void dIsChArGeLoAn(loan LoAn) {
-		if (LNS.containsKey(LoAn.ID())) {
-			LNS.remove(LoAn.ID());
+	public void dischargeLoan(loan loanAmount) {
+		if (LNS.containsKey(load.id())) {
+			LNS.remove(loan.id());
 		}
 		else {
 			throw new RuntimeException("No such loan held by member");
