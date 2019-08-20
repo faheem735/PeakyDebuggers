@@ -46,7 +46,7 @@ public class FixBookControl {
 
 
 	public void FIX_Book(boolean MUST_fix) {
-		if (!StAtE.equals(CONTROL_STATE.FIXING)) {
+		if (!state.equals(ControlState.FIXING)) {//changed control state and state-Zeeshan 13/8
 			throw new RuntimeException("FixBookControl: cannot call fixBook except in FIXING state");
 		}	
 		if (MUST_fix) {
