@@ -10,19 +10,19 @@ public class Calendar {
 	private Calendar() {
 		calendar = java.util.Calendar.getInstance();
 	}
-	// change seLf to self
-	public static Calendar instance() {// change INSTANCE to instance
+	// change seLf to self by sudeep
+	public static Calendar instance() {// change INSTANCE to instance by sudeep
 		if (self == null) {
 			self = new calendar();
 		}
 		return self;
 	}
-	// change CaLeNdAr to calendar
+	// change CaLeNdAr to calendar by sudeep
 	public void incrementDate(int days) {
 		calendar.add(java.util.Calendar.DATE, days);		
 	}
 	
-	public synchronized void setDate(Date date) { // change to setDate from Set_dATE
+	public synchronized void setDate(Date date) { // change to setDate from Set_dATE by sudeep
 		try {
 			calendar.setTime(date);
 	        calendar.set(java.util.Calendar.hourOfDay, 0);  // change HOUR_OF_DAY to hourOfDay by sudeep 
