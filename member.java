@@ -60,7 +60,7 @@ public class member implements Serializable {
 	}
 
 	
-	public double finesOwned() {
+	public double finesOwed() {
 		return fines;
 	}
 
