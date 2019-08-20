@@ -15,8 +15,8 @@ public class PayFineUI {
 	public PayFineUI(PayFineControl control) {
 		this.control = control; // changed CoNtRoL to control
 		input = new Scanner(System.in);
-		state = uiState.INITIALISED; // corrected variable names
-		control.setUi(this); // fixed variable name
+		StAtE = UI_STATE.INITIALISED;
+		control.Set_UI(this);
 	}
 	
 	
@@ -75,7 +75,7 @@ public class PayFineUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state is:" + state);	 // changed sTaTe to state		
+				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);		
 			
 			}		
 		}		
