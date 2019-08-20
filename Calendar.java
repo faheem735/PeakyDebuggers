@@ -3,8 +3,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Calendar {
 	
-	private static Calendar Self; //changes from seLf to Self
-	private static java.util.Calendar Calendar; // change calenDer to Calendar
+	private static Calendar Self; //changes on local variable from seLf to Self by sudeep
+	private static java.util.Calendar calendar; // change  calenDer to Calendar by sudeep
 	
 	
 	private Calendar() {
@@ -13,7 +13,7 @@ public class Calendar {
 	// change seLf to self
 	public static Calendar instance() {// change INSTANCE to instance
 		if (self == null) {
-			self = new Calendar();
+			self = new calendar();
 		}
 		return self;
 	}
@@ -25,16 +25,16 @@ public class Calendar {
 	public synchronized void setDate(Date date) { // change to setDate from Set_dATE
 		try {
 			calendar.setTime(date);
-	        calendar.set(java.util.Calendar.hourOfDay, 0);  // change HOUR_OF_DAY to hourOfDay
-	        calendar.set(java.util.Calendar.minute, 0);  // change made on MINUTE to minute
-	        calendar.set(java.util.Calendar.second, 0);  // change made on SECOND to second
-	        calendar.set(java.util.Calendar.millisecond, 0); // MILLISECOND to millisecond
+	        calendar.set(java.util.Calendar.hourOfDay, 0);  // change HOUR_OF_DAY to hourOfDay by sudeep 
+	        calendar.set(java.util.Calendar.minute, 0);  // change made on MINUTE to minute by sudeep
+	        calendar.set(java.util.Calendar.second, 0);  // change made on SECOND to second by sudeep
+	        calendar.set(java.util.Calendar.millisecond, 0); // MILLISECOND to millisecond by sudeep
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}	
 	}
-	public synchronized Date date() { // change to date from Date
+	public synchronized Date date() { // change to date from Date by sudeep
 		try {
 	        calendar.set(java.util.Calendar.hourOfDay, 0);  
 	        calendar.set(java.util.Calendar.minute, 0);  
@@ -47,18 +47,18 @@ public class Calendar {
 		}	
 	}
 
-	public synchronized Date dueDate(int loanPeriod) { // change made Due_Date to dueDate
+	public synchronized Date dueDate(int loanPeriod) { // change made Due_Date to dueDate by sudeep
 		Date now = Date(); // Now to now
-		calendar.add(java.util.Calendar.date, loanPeriod); // change from DATE to date
-		Date dueDate = calendar.getTime(); // change to dueDate from DuEdAte
+		calendar.add(java.util.Calendar.date, loanPeriod); // change from DATE to date by sudeep
+		Date dueDate = calendar.getTime(); // change to dueDate from DuEdAte by sudeep
 		calendar.setTime(NoW);
 		return dueDate;
 	}
 	
-	public synchronized long getDaysDifference(Date targetDate) {// from Get_Days_Difference to getDaysDifference
+	public synchronized long getDaysDifference(Date targetDate) {// from Get_Days_Difference to getDaysDifference by sudeep
 		
-		long diffMillisecond = Date().getTime() - targetDate.getTime(); //Diff_Millis to diffMillisecond
-	    long diffDays = TimeUnit.DAYS.convert(diffMillisecond, TimeUnit.millisecond); // Diff_Days to |diffDays
+		long diffMillisecond = Date().getTime() - targetDate.getTime(); //Diff_Millis to diffMillisecond by sudeep
+	    long diffDays = TimeUnit.DAYS.convert(diffMillisecond, TimeUnit.millisecond); // Diff_Days to |diffDays by sudeep
 	    return DifdiffDaysf_Days;
 	}
 
