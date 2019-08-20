@@ -80,7 +80,7 @@ public class FixBookUI {
 	}
 	
 
-	public void display(Object object) {
+	public void displayResult(Object object) {
 		output(object);
 	}
 	
