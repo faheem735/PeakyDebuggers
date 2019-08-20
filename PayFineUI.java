@@ -16,7 +16,7 @@ public class PayFineUI {
 		this.control = control; // changed CoNtRoL to control
 		input = new Scanner(System.in);
 		state = uiState.INITIALISED; // corrected variable names
-		control.setUi(this);
+		control.setUi(this); // fixed variable name
 	}
 	
 	
