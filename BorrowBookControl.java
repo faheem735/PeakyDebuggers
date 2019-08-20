@@ -21,7 +21,7 @@ public class BorrowBookControl {
 	}
 	
 
-	public void setUi(BorrowBookUi userInterface) { // change made on setuI to setUi and BorrowBookUI to BorrowBookUi and UI to userInterface
+	public void setUserInterface(BorrowBookUi userInterface) { // change made on setuI to setUi and BorrowBookUI to BorrowBookUi and UI to userInterface
 	
 	// changes made on CONTROL_STATE to ControlState
 		if (!state.equals(ControlState.INITIALISED)) { // added { afer the if condition
@@ -34,7 +34,7 @@ public class BorrowBookControl {
 	}
 
 		
-	public void Swiped(int memberId) {// change MEMMER_ID to memberId
+	public void swiped(int memberId) {// change MEMMER_ID to memberId
 		if (!state.equals(ControState.READY)) 
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 		// change LIBRARY to Library	
@@ -43,7 +43,7 @@ public class BorrowBookControl {
 			userInterface.display("Invalid memberId");
 			return;
 		}
-		if (Library.MEMBER_CAN_BORROW(M)) {
+		if (Library.memberCanBorrow(member)) { //MEMBER_CAN_BORROW to memberCanBorrow by sudeep
 			PENDING = new ArrayList<>();
 			userInterface.setState(BorrowBookUI.userInterfaceState.SCANNING);
 			state = ControState.SCANNING; }
@@ -53,7 +53,7 @@ public class BorrowBookControl {
 			userInterface.setState(BorrowBookUI.userInterfaceState.RESTRICTED); }}
 	
 	
-	public void Scanned(int bookId) {
+	public void scanned(int bookId) {
 		// changes made on all BOOK to book
 		book = null;
 		if (!state.equals(ControState.SCANNING)) {
@@ -115,7 +115,7 @@ public class BorrowBookControl {
 
 	
 	public void cancel() {
-		userInterface.SetState(BorrowBookUI.userInterfaceState.CANCELLED); //// changes made from Set_State to setState by sudeep
+		userInterface.SetState(BorrowBookUI.userInterfaceState.CANCELLED); // changes made from Set_State to setState by sudeep
 		state = ControState.CANCELLED;
 	}
 	
