@@ -6,7 +6,7 @@ public class BorrowBookControl {
 	private BorrowBookUi userInterface; // changes from BorrowBookUI to BorrowBookUi 
 	
 	private Library liberary; // change on the name
-	private member M;
+	private Member member; // Change m to member
 	private enum ControlState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };// changes the enum name from CONTROL_STATE to ControlState.
 	private ControlState state;
 	
@@ -38,8 +38,8 @@ public class BorrowBookControl {
 		if (!state.equals(ControState.READY)) 
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 		// change LIBRARY to Library	
-		M = Library.member(memberId); // change MEMMER_ID to memberId
-		if (M == null) {
+		member = Library.member(memberId); // change MEMMER_ID to memberId
+		if (member == null) { // change m to member
 			userInterface.Display("Invalid memberId");
 			return;
 		}
