@@ -16,7 +16,7 @@ public class member implements Serializable {
 	
 	private Map<Integer, loan> LNS;
 
-	
+	 // channging variable names 
 	public member(String lastName, String firstName, String email, int phoneNo, int id) {
 		this.lastName = lastName;
 		this.firstName = firstName;
