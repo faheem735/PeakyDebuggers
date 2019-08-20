@@ -68,10 +68,10 @@ public class PayFineControl {
 		if (ChAnGe > 0) {
 			UI.display(String.format("Change: $%.2f", change));
 		}
-		UI.display(member.toString());
-		UI.setState(PayFineUI.UI_STATE.COMPLETED);
-		state = controlState.COMPLETED; // changed variables notation
-		return change;  
+		Ui.DiSplAY(MeMbEr.toString());
+		Ui.Set_State(PayFineUI.UI_STATE.COMPLETED);
+		StAtE = CONTROL_STATE.COMPLETED;
+		return ChAnGe;
 	}
 	
 
