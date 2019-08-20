@@ -58,11 +58,11 @@ public class FixBookControl {
 	}
 
 	
-	public void SCannING_COMplete() {
-		if (!StAtE.equals(CONTROL_STATE.READY)) {
+	public void scanningComplete() {
+		if (!state.equals(ControlState.READY)) {//changed control state and state-Zeeshan 13/8
 			throw new RuntimeException("FixBookControl: cannot call scanningComplete except in READY state");
 		}	
-		UI.Set_State(FixBookUI.UI_STATE.COMPLETED);		
+		UI.setState(FixBookUI.userInterfaceState.COMPLETED);//changed userInterface and ui-zeeshan		
 	}
 
 
