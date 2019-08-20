@@ -26,7 +26,7 @@ public class ReturnBookControl {
 
 	public void bookScanned(int bookID) { // changed variable names
 		if (!state.equals(controlState.READY)) { // changed variable names
-			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
+			throw new RuntimeException("Err. ReturnBookControl: cannot call bookScanned except in READY state");
 		}	
 		book currentBook = library.Book(bookID); // Changed variable names
 		
