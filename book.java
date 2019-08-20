@@ -16,7 +16,7 @@ public class Book implements Serializable {
 	public book(String author, String title, String phoneNO, int bookId) {
 		this.author = author;
 		this.title = title;
-		this.phoneNo = callNo;
+		this.phoneNo = phoneNO;
 		this.bookId = bookId;
 		this.State = State.AVAILABLE;
 	}
@@ -26,7 +26,7 @@ public class Book implements Serializable {
 		sb.append("Book: ").append(bookId).append("\n")
 		  .append("  Title:  ").append(title).append("\n")
 		  .append("  Author: ").append(author).append("\n")
-		  .append("  CallNo: ").append(phoneNo).append("\n")
+		  .append("  phoneNO: ").append(phoneNo).append("\n")
 		  .append("  State:  ").append(State);
 		
 		return sb.toString();
