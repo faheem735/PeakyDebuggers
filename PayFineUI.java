@@ -75,7 +75,7 @@ public class PayFineUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + state);	 // changed sTaTe to state		
+				throw new RuntimeException("FixBookUI : unhandled state is:" + state);	 // changed sTaTe to state		
 			
 			}		
 		}		
