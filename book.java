@@ -68,7 +68,7 @@ public class Book implements Serializable {
 	}
 
 
-	public void Return(boolean DAMAGED) {
+	public void returndamage(boolean DAMAGED) {
 		if (State.equals(state.ON_LOAN)) {
 			if (DAMAGED) {
 				state = State.DAMAGED; // changes state to State and State to state- by sudeep
