@@ -2,15 +2,15 @@ public class ReturnBookControl {
 
 	private ReturnBookUI Ui;
 	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
-	private CONTROL_STATE sTaTe;
+	private CONTROL_STATE state;
 	
-	private library lIbRaRy;
-	private loan CurrENT_loan;
+	private library library;
+	private loan currentLoan;
 	
 
 	public ReturnBookControl() {
-		this.lIbRaRy = lIbRaRy.INSTANCE();
-		sTaTe = CONTROL_STATE.INITIALISED;
+		this.library = library.INSTANCE();
+		state = CONTROL_STATE.INITIALISED;
 	}
 	
 	
