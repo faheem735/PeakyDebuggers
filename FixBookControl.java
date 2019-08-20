@@ -49,12 +49,12 @@ public class FixBookControl {
 		if (!state.equals(ControlState.FIXING)) {//changed control state and state-Zeeshan 13/8
 			throw new RuntimeException("FixBookControl: cannot call fixBook except in FIXING state");
 		}	
-		if (MUST_fix) {
-			LIB.Repair_BOOK(Cur_Book);
+		if (toFix) {//changed to fix - Zeeshan
+			library.Repair_BOOK(Cur_Book);//changed lIb to library-zeeshan
 		}
-		Cur_Book = null;
-		UI.Set_State(FixBookUI.UI_STATE.READY);
-		StAtE = CONTROL_STATE.READY;		
+		cuurentBook = null;//changed currentBook-zeeshan
+		userInterface.setState(FixBookUI.userInterfaceState.READY);//changed userInterface and ui-zeeshan
+		state = ControlState.READY;//changed control state and state-Zeeshan 13/8		
 	}
 
 	
