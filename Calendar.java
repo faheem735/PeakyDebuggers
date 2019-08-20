@@ -48,7 +48,7 @@ public class Calendar {
 	}
 
 	public synchronized Date dueDate(int loanPeriod) { // change made Due_Date to dueDate by sudeep
-		Date now = Date(); // Now to now
+		Date now = Date(); // Now to now by sudeep
 		calendar.add(java.util.Calendar.date, loanPeriod); // change from DATE to date by sudeep
 		Date dueDate = calendar.getTime(); // change to dueDate from DuEdAte by sudeep
 		calendar.setTime(NoW);
