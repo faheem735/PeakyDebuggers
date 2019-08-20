@@ -18,15 +18,15 @@ public class ReturnBookControl {
 		if (!state.equals(controlState.INITIALISED)) { // fixed variable names
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		}	
-		this.ui = ui; // corrected some variable names according to a convention
-		ui.setState(ReturnBookUI.UI_STATE.READY);
-		state = controlState.READY;		
+				}			this.Ui = ui;
+		ui.Set_State(ReturnBookUI.UI_STATE.READY);
+		sTaTe = CONTROL_STATE.READY;		
 	}
 
 
-	public void bookScanned(int bookID) { // changed variable names
-		if (!state.equals(controlState.READY)) { // changed variable names
-			throw new RuntimeException("Err. ReturnBookControl: cannot call bookScanned except in READY state");
+	public void Book_scanned(int Book_ID) {
+		if (!sTaTe.equals(CONTROL_STATE.READY)) {
+			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
 		}	
 		book currentBook = library.Book(bookID); // Changed variable names
 		
