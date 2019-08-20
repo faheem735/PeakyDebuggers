@@ -40,7 +40,7 @@ public class BorrowBookControl {
 		// change LIBRARY to Library	
 		member = Library.member(memberId); // change MEMMER_ID to memberId
 		if (member == null) { // change m to member
-			userInterface.Display("Invalid memberId");
+			userInterface.display("Invalid memberId");
 			return;
 		}
 		if (Library.MEMBER_CAN_BORROW(M)) {
@@ -49,7 +49,7 @@ public class BorrowBookControl {
 			state = ControState.SCANNING; }
 		else 
 		{
-			userInterface.Display("Member cannot borrow at this time");
+			userInterface.display("Member cannot borrow at this time");
 			userInterface.setState(BorrowBookUI.userInterfaceState.RESTRICTED); }}
 	
 	
@@ -61,20 +61,20 @@ public class BorrowBookControl {
 		}	
 		book = Library.Book(bookId);
 		if (book == null) {
-			userInterface.Display("Invalid bookId");
+			userInterface.display("Invalid bookId");
 			return;
 		}
 		if (!book.AVAILABLE()) {
-			userInterface.Display("Book cannot be borrowed");
+			userInterface.display("Book cannot be borrowed");
 			return;
 		}
 		// changes  all PENDING to pending by sudeep
 		pending.add(book);
 		for (book B : pending) {
-			userInterface.Display(B.toString());
+			userInterface.display(B.toString());
 		}
 		if (Library.Loans_Remaining_For_Member(M) - pending.size() == 0) {
-			userInterface.Display("Loan limit reached");
+			userInterface.display("Loan limit reached");
 			complete(); // changes to complete from Complete by sudeep
 		}
 	}
@@ -85,9 +85,9 @@ public class BorrowBookControl {
 			cancel();
 		}
 		else {
-			userInterface.Display("\nFinal Borrowing List");
+			userInterface.display("\nFinal Borrowing List");
 			for (book B : pending) {
-				userInterface.Display(B.toString());
+				userInterface.display(B.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
 			userInterface.setState(BorrowBookUI.userInterfaceState.FINALISING);// changes made from Set_State to setState by sudeep
@@ -105,9 +105,9 @@ public class BorrowBookControl {
 			loan loan = Library.issueLoan(B, M);  // ISSUE_LAON to issueLoan by sudeep
 			COMPLETED.add(loan);			
 		}
-		userInterface.Display("Completed Loan Slip");
+		userInterface.display("Completed Loan Slip");
 		for (loan loan : COMPLETED) {
-			userInterface.Display(loan.toString());
+			userInterface.display(loan.toString());
 		}
 		userInterface.setState(BorrowBookUI.userInterfaceState.COMPLETED); // changes made from Set_State to setState by sudeep
 		state = ControState.COMPLETED;
