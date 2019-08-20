@@ -57,9 +57,9 @@ public class Calendar {
 	
 	public synchronized long getDaysDifference(Date targetDate) {// from Get_Days_Difference to getDaysDifference
 		
-		long Diff_Millis = Date().getTime() - targetDate.getTime();
-	    long Diff_Days = TimeUnit.DAYS.convert(Diff_Millis, TimeUnit.MILLISECONDS);
-	    return Diff_Days;
+		long diffMillisecond = Date().getTime() - targetDate.getTime(); //Diff_Millis to diffMillisecond
+	    long diffDays = TimeUnit.DAYS.convert(diffMillisecond, TimeUnit.millisecond); // Diff_Days to |diffDays
+	    return DifdiffDaysf_Days;
 	}
 
 }
