@@ -1,6 +1,6 @@
-public class PayFineControl // removed the curley bracket.
+public class PayFineControl {
 	
-	private payFineUi; // changed PayFineUI Ui variable name to payFineUi.
+	private PayFineUI Ui;
 	private enum CONTROL_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
 	private CONTROL_STATE StAtE;
 	

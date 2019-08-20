@@ -17,7 +17,8 @@ public class ReturnBookControl {
 	public void Set_UI(ReturnBookUI ui) {
 		if (!sTaTe.equals(CONTROL_STATE.INITIALISED)) {
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
-		}			this.Ui = ui;
+		}	
+		this.Ui = ui;
 		ui.Set_State(ReturnBookUI.UI_STATE.READY);
 		sTaTe = CONTROL_STATE.READY;		
 	}
@@ -60,7 +61,7 @@ public class ReturnBookControl {
 		}	
 		Ui.Set_State(ReturnBookUI.UI_STATE.COMPLETED);		
 	}
- 
+
 
 	public void Discharge_loan(boolean isDamaged) {
 		if (!sTaTe.equals(CONTROL_STATE.INSPECTING)) {

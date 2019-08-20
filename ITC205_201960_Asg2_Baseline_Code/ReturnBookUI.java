@@ -3,40 +3,40 @@ import java.util.Scanner;
 
 public class ReturnBookUI {
 
-	public static enum uiState { INITIALISED, READY, INSPECTING, COMPLETED }; // made changes to variable name
+	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
 
-	private ReturnBookControl control; // made changes to variable name
+	private ReturnBookControl CoNtRoL;
 	private Scanner input;
-	private uiState state; // made changes to variable name
+	private UI_STATE StATe;
 
 	
 	public ReturnBookUI(ReturnBookControl control) {
-		this.control = control;
+		this.CoNtRoL = control;
 		input = new Scanner(System.in);
-		state = uiState.INITIALISED;// made changes to variable name
-		control.setUi(this); // made changes to variable name
+		StATe = UI_STATE.INITIALISED;
+		control.Set_UI(this);
 	}
 
 
-	public void run() { // changed function name		
+	public void RuN() {		
 		output("Return Book Use Case UI\n");
 		
 		while (true) {
 			
-			switch (state) { // corrected variable name
+			switch (StATe) {
 			
 			case INITIALISED:
 				break;
 				
 			case READY:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
-					control.scanningCompelete(); // adjustment made to names
+				String Book_STR = input("Scan Book (<enter> completes): ");
+				if (Book_STR.length() == 0) {
+					CoNtRoL.Scanning_Complete();
 				}
 				else {
 					try {
-						int Book_Id = Integer.valueOf(bookStr).intValue();
-						control.bookScanned(bookId);
+						int Book_Id = Integer.valueOf(Book_STR).intValue();
+						CoNtRoL.Book_scanned(Book_Id);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -46,11 +46,11 @@ public class ReturnBookUI {
 				
 			case INSPECTING:
 				String ans = input("Is book damaged? (Y/N): ");
-				boolean isDamaged = false;// made changes to variable name
+				boolean Is_Damaged = false;
 				if (ans.toUpperCase().equals("Y")) {					
-					isDamaged = true; // made changes to variable name
+					Is_Damaged = true;
 				}
-				control.dischargeLoan(isDamaged);
+				CoNtRoL.Discharge_loan(Is_Damaged);
 			
 			case COMPLETED:
 				output("Return processing complete");
@@ -79,8 +79,8 @@ public class ReturnBookUI {
 		output(object);
 	}
 	
-	public void setState(uiState state) { // made changes to function name
-		this.state = state;
+	public void Set_State(UI_STATE state) {
+		this.StATe = state;
 	}
 
 	

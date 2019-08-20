@@ -3,76 +3,76 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @SuppressWarnings("serial")
-public class loan implements Serializable {
+public class Loan implements Serializable { //Changed Class name to Loan-Zeeshan 13/8
 	
-	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
+	public static enum LoanState { CURRENT, OVER_DUE, DISCHARGED };//Changed LOAN_STATE to LoanState-Zeeshan 13/8
 	
-	private int ID;
-	private book B;
-	private member M;
-	private Date D;
-	private LOAN_STATE state;
+	private int loanId;//Changed id to loanId -Zeeshan 13/8
+	private book book;//Changed b to book-Zeeshan 13/8
+	private member member;//Changed m to member-Zeeshan 13/8
+	private Date date;//Changed d to date-Zeeshan 13/8
+	private loanState state;//Changed LOAN_STATE to loanState
 
 	
-	public loan(int loanId, book book, member member, Date dueDate) {
-		this.ID = loanId;
-		this.B = book;
-		this.M = member;
-		this.D = dueDate;
-		this.state = LOAN_STATE.CURRENT;
+	public Loan(int loanId, book book, member member, Date dueDate) {//Changed class name to Loan-Zeeshan 13/8
+		this.loanId = loanId;//Changed id to loanId -Zeeshan 13/8
+		this.book = book;//Changed b to book-Zeeshan 13/8
+		this.member = member;//Changed m to member-Zeeshan 13/8
+		this.date = dueDate;//Changed d to date-Zeeshan 13/8
+		this.state = loanState.CURRENT;//Changed LOAN_STATE to loanState Zeeshan 13/8
 	}
 
 	
 	public void checkOverDue() {
-		if (state == LOAN_STATE.CURRENT &&
-			Calendar.INSTANCE().Date().after(D)) {
-			this.state = LOAN_STATE.OVER_DUE;			
+		if (state == loanState.CURRENT && //Changed LOAN_STATE to loanState Zeeshan 13/8
+			Calendar.INSTANCE().Date().after(date)) {
+			this.state = loanState.overDue;////Changed LOAN_STATE to loanState Zeeshan 13/8			
 		}
 	}
 
 	
-	public boolean OVer_Due() {
-		return state == LOAN_STATE.OVER_DUE;
+	public boolean getOverDue() {//Changed function name to getOverDue-Zeeshan 13/8
+		return state == loanState.overDue;////Changed LOAN_STATE to loanState Zeeshan 13/8
 	}
 
 	
-	public Integer ID() {
-		return ID;
+	public Integer getLoanId() {//Changed Function name to getLoanId-Zeeshan 13/8
+		return loanId;//Changed loanId-Zeeshan 13/8
 	}
 
 
-	public Date Get_Due_Date() {
-		return D;
+	public Date getDueDate() {//Changed function name to getDueDate-Zeeshan 13/8
+		return date;//Changed D to date-Zeeshan 13/8
 	}
 	
 	
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		simpleDateFormat sdf = new simpleDateFormat("dd/MM/yyyy");//Changed Function name to simpleDateFormat-Zeeshan 13/8 
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("Loan:  ").append(ID).append("\n")
-		  .append("  Borrower ").append(M.GeT_ID()).append(" : ")
-		  .append(M.Get_LastName()).append(", ").append(M.Get_FirstName()).append("\n")
-		  .append("  Book ").append(B.ID()).append(" : " )
-		  .append(B.TITLE()).append("\n")
+		  .append("  Borrower ").append(M.getId()).append(" : ")//Change GET_ID to getID-Zeeshan 13/8
+		  .append(M.getLastName()).append(", ").append(M.getFirstName()).append("\n")//Changed function name to getLastName and getFirstName-Zeeshan 13/8
+		  .append("  Book ").append(book.ID()).append(" : " )
+		  .append(B.tittle()).append("\n")//Changed function name to tittle -Zeeshan 13/8
 		  .append("  DueDate: ").append(sdf.format(D)).append("\n")
 		  .append("  State: ").append(state);		
 		return sb.toString();
 	}
 
 
-	public member Member() {
-		return M;
+	public member getMember() {//Chnaged function name to getMember-Zeeshan 13/8
+		return member;//Changed member-Zeeshan 13/8
 	}
 
 
-	public book Book() {
-		return B;
+	public book getBook() {//Changed function name to getBook-Zeeshan 13/8
+		return book;//Changed varibale name to book-Zeesahn 13/8
 	}
 
 
-	public void DiScHaRgE() {
-		state = LOAN_STATE.DISCHARGED;		
+	public void toDischarge() {//Changed function anme to discharge-Zeeshan 13/8
+		state = loanState.DISCHARGED;		//Changed varibale name to loanState-Zeeshan 13/8
 	}
 
 }
