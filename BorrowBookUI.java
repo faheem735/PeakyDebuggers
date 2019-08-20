@@ -53,8 +53,9 @@ public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(memberCardNo).intValue();
-					control.Swiped(Member_ID);
+					int memberId = Integer.valueOf(memberCardNo).intValue(); // change the Member_ID to memberId by sudeep
+					control.Swiped(memberId); // change the Member_ID to memberId by sudeep
+					control.Swiped(memberId);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
