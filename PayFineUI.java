@@ -19,7 +19,7 @@ public class PayFineUI {
 	}
 	
 	
-	public void Set_State(UI_STATE state) {
+	public void setState(UI_STATE state) {
 		this.state = state;
 	}
 
@@ -32,14 +32,14 @@ public class PayFineUI {
 			switch (state) {
 			
 			case READY:
-				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
-				if (Mem_Str.length() == 0) {
+				String memStr = input("Swipe member card (press <enter> to cancel): ");
+				if (memStr.length() == 0) {
 					control.cancel();
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(Mem_Str).intValue();
-					control.Card_Swiped(Member_ID);
+					int memberId = Integer.valueOf(memStr).intValue();
+					control.Card_Swiped(memberId);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid memberId");
@@ -48,13 +48,13 @@ public class PayFineUI {
 				
 			case PAYING:
 				double amount = 0;
-				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
-				if (Amt_Str.length() == 0) {
+				String amountStr = input("Enter amount (<Enter> cancels) : ");
+				if (amountStr.length() == 0) {
 					control.cancel();
 					break;
 				}
 				try {
-					amount = Double.valueOf(Amt_Str).doubleValue();
+					amount = Double.valueOf(amountStr).doubleValue();
 				}
 				catch (NumberFormatException e) {}
 				if (amount <= 0) {
