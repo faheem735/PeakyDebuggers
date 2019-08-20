@@ -5,7 +5,7 @@ public class ReturnBookControl {
 	private CONTROL_STATE state;
 	
 	private library library;
-	private loan currentLoan;
+	private loan currentBook;
 	
 
 	public ReturnBookControl() {
@@ -23,30 +23,30 @@ public class ReturnBookControl {
 	}
 
 
-	public void bookScanned(int Book_ID) {
+	public void Book_scanned(int Book_ID) {
 		if (!state.equals(CONTROL_STATE.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
 		}	
-		book currentBook = library.Book(bookID);
+		book currentBook = library.Book(Book_ID);
 		
 		if (currentBook == null) {
 			Ui.display("Invalid Book Id");
 			return;
 		}
-		if (!currentBook.onloan()) {
+		if (!currentBook.On_loan()) {
 			Ui.display("Book has not been borrowed");
 			return;
 		}		
-		currentLoan = library.LOAN_BY_BOOK_ID(bookID);	
+		currentLoan = library.LOAN_BY_BOOK_ID(Book_ID);	
 		double overDueFine = 0.0;
 		if (currentLoan.overDue()) {
-			Over_Due_Fine = lIbRaRy.CalculateOverDueFine(CurrENT_loan);
+			overDueFine = library.CalculateOverDueFine(currentLoan);
 		}
 		Ui.display("Inspecting");
 		Ui.display(currentBook.toString());
 		Ui.display(currentLoan.toString());
 		
-		if (currentLoan.OVer_Due()) {
+		if (currentLoan.overDue()) {
 			Ui.display(String.format("\nOverdue fine : $%.2f", overDueFine));
 		}
 		Ui.Set_State(ReturnBookUI.UI_STATE.INSPECTING);
@@ -60,7 +60,7 @@ public class ReturnBookControl {
 		}	
 		Ui.Set_State(ReturnBookUI.UI_STATE.COMPLETED);		
 	}
- 
+
 
 	public void dischargeLoan(boolean isDamaged) {
 		if (!state.equals(CONTROL_STATE.INSPECTING)) {
