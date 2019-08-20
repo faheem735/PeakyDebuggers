@@ -7,22 +7,22 @@ import java.util.Map;
 @SuppressWarnings("serial")
 public class member implements Serializable {
 
-	private String LN;
-	private String FN;
-	private String EM;
-	private int PN;
-	private int ID;
-	private double FINES;
+	private String lastName; // Last name 
+	private String firstName; // First name
+	private String email; // Email
+	private int phoneNo; // Phone no
+	private int id; // ID
+	private double fines; // fines variable
 	
 	private Map<Integer, loan> LNS;
 
 	
 	public member(String lastName, String firstName, String email, int phoneNo, int id) {
-		this.LN = lastName;
-		this.FN = firstName;
-		this.EM = email;
-		this.PN = phoneNo;
-		this.ID = id;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.email = email;
+		this.phoneNo = phoneNo;
+		this.id = id;
 		
 		this.LNS = new HashMap<>();
 	}
