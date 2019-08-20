@@ -45,16 +45,16 @@ public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 				output("Borrowing Cancelled");
 				return;
 
-				
+				// changes all CONTROL to control
 			case READY:
 				String memberCardNo = input("Swipe member card (press <enter> to cancel): "); // change made from MEM_STR to memberCardNo
 				if (memberCardNo.length() == 0) {
-					CONTROL.cancel();
+					comtrol.cancel();
 					break;
 				}
 				try {
 					int Member_ID = Integer.valueOf(memberCardNo).intValue();
-					CONTROL.Swiped(Member_ID);
+					comtrol.Swiped(Member_ID);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
@@ -64,19 +64,19 @@ public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 				
 			case RESTRICTED:
 				input("Press <any key> to cancel");
-				CONTROL.cancel();
+				comtrol.cancel();
 				break;
 			
 				
 			case SCANNING:
-				String Book_Str = input("Scan Book (<enter> completes): ");
-				if (Book_Str.length() == 0) {
-					CONTROL.Complete();
+				String bookScan = input("Scan Book (<enter> completes): "); //changes Book_Str to bookscan and changes made on further as well.
+				if (bookScan.length() == 0) {
+					comtrol.Complete();
 					break;
 				}
 				try {
-					int BiD = Integer.valueOf(Book_Str).intValue();
-					CONTROL.Scanned(BiD);
+					int bookId = Integer.valueOf(bookScan).intValue(); // changes from BID to bookId
+					comtrol.Scanned(bookId);
 					
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id");
@@ -85,12 +85,12 @@ public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 					
 				
 			case FINALISING:
-				String Ans = input("Commit loans? (Y/N): ");
-				if (Ans.toUpperCase().equals("N")) {
-					CONTROL.cancel();
+				String answer = input("Commit loans? (Y/N): "); // Ans to answer
+				if (answer.toUpperCase().equals("N")) {
+					comtrol.cancel();
 					
 				} else {
-					CONTROL.Commit_LOans();
+					comtrol.commitLoan(); //changes made on Commit_Loan to commitLoan
 					input("Press <any key> to complete ");
 				}
 				break;
@@ -109,7 +109,7 @@ public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 	}
 
 
-	public void Display(Object object) {
+	public void display(Object object) { // change on Display to display.
 		output(object);		
 	}
 
