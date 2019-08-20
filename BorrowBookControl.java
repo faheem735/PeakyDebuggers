@@ -43,7 +43,7 @@ public class BorrowBookControl {
 			userInterface.display("Invalid memberId");
 			return;
 		}
-		if (Library.MEMBER_CAN_BORROW(M)) {
+		if (Library.memberCanBorrow(member)) { //MEMBER_CAN_BORROW to memberCanBorrow by sudeep
 			PENDING = new ArrayList<>();
 			userInterface.setState(BorrowBookUI.userInterfaceState.SCANNING);
 			state = ControState.SCANNING; }
