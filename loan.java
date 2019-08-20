@@ -71,7 +71,7 @@ public class Loan implements Serializable { //Changed Class name to Loan-Zeeshan
 	}
 
 
-	public void discharge() {//Changed function anme to discharge-Zeeshan 13/8
+	public void toDischarge() {//Changed function anme to discharge-Zeeshan 13/8
 		state = loanState.DISCHARGED;		//Changed varibale name to loanState-Zeeshan 13/8
 	}
 
