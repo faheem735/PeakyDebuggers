@@ -22,7 +22,7 @@ public class Book implements Serializable {
 	}
 	
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder stingBuilder = new StringBuilder();
 		sb.append("Book: ").append(bookId).append("\n")
 		  .append("  Title:  ").append(title).append("\n")
 		  .append("  Author: ").append(author).append("\n")
