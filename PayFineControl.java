@@ -19,7 +19,7 @@ public class PayFineControl // removed the curley bracket.
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
 		}	
 		this.Ui = ui;
-		ui.Set_State(PayFineUI.UI_STATE.READY);
+		ui.setState(PayFineUI.UI_STATE.READY);
 		state = CONTROL_STATE.READY;		
 	}
 
@@ -35,13 +35,13 @@ public class PayFineControl // removed the curley bracket.
 			return;
 		}
 		Ui.display(MeMbEr.toString());
-		Ui.Set_State(PayFineUI.UI_STATE.PAYING);
+		Ui.setState(PayFineUI.UI_STATE.PAYING);
 		state = CONTROL_STATE.PAYING;
 	}
 	
 	
 	public void cancel() {
-		Ui.Set_State(PayFineUI.UI_STATE.CANCELLED);
+		Ui.setState(PayFineUI.UI_STATE.CANCELLED);
 		state = CONTROL_STATE.CANCELLED;
 	}
 
@@ -54,8 +54,8 @@ public class PayFineControl // removed the curley bracket.
 		if (change > 0) {
 			Ui.DiSplAY(String.format("Change: $%.2f", ChAnGe));
 		}
-		Ui.display(MeMbEr.toString());
-		Ui.Set_State(PayFineUI.UI_STATE.COMPLETED);
+		Ui.display(member.toString());
+		Ui.setState(PayFineUI.UI_STATE.COMPLETED);
 		state = CONTROL_STATE.COMPLETED;
 		return change;
 	}
