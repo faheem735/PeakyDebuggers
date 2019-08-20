@@ -22,14 +22,14 @@ public class Book implements Serializable {
 	}
 	
 	public String toString() {
-		StringBuilder stingBuilder = new StringBuilder();
-		sb.append("Book: ").append(bookId).append("\n")
-		  .append("  Title:  ").append(title).append("\n")
-		  .append("  Author: ").append(author).append("\n")
-		  .append("  phoneNO: ").append(phoneNo).append("\n")
-		  .append("  State:  ").append(State);
+		StringBuilder stingBuilder = new stingbuilder();
+		stingbuilder.append("Book: ").append(bookId).append("\n")
+		stingbuilder.append("  Title:  ").append(title).append("\n")
+		stingbuilder.append("  Author: ").append(author).append("\n")
+		stingbuilder.append("  phoneNO: ").append(phoneNo).append("\n")
+		stingbuilder.append("  State:  ").append(State);
 		
-		return sb.toString();
+		return stingbuilder.toString();
 	}
 
 	public Integer bookId() {// ID ro bookId
