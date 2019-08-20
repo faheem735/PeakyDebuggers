@@ -1,20 +1,20 @@
 import java.util.Scanner;
 
 
-public class BorrowBookUI {
+public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 	
-	public static enum UI_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
-
-	private BorrowBookControl CONTROL;
+	public static enum UserInterfaceState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };// change UI_STATE to UserInterfaceState
+	// changes all the variables to the lowercase and camelback
+	private BorrowBookControl control; // change to control
 	private Scanner input;
-	private UI_STATE StaTe;
+	private UserInterfaceState state;
 
 	
-	public BorrowBookUI(BorrowBookControl control) {
-		this.CONTROL = control;
+	public borrowBookUi(BorrowBookControl control) {// BorrowbookUI to borrowBookUi
+		this.control = control; // CONTROL to control
 		input = new Scanner(System.in);
-		StaTe = UI_STATE.INITIALISED;
-		control.setUI(this);
+		state = UserInterfaceState.INITIALISED; // change UI_STATE to UserInterfaceState
+		control.setUserInterface(this); // change to setUserInterface to ustUI
 	}
 
 	
@@ -29,8 +29,8 @@ public class BorrowBookUI {
 	}
 	
 			
-	public void Set_State(UI_STATE STATE) {
-		this.StaTe = STATE;
+	public void setState(UserInterfaceState state) { //change set_State to setState and UI_STATE to UserInterfaceState and STATE to state
+		this.state = state;// change StaTe and STATE to state
 	}
 
 	
@@ -39,22 +39,22 @@ public class BorrowBookUI {
 		
 		while (true) {
 			
-			switch (StaTe) {			
+			switch (state) { // change in staTe to state				
 			
 			case CANCELLED:
 				output("Borrowing Cancelled");
 				return;
 
-				
+				// changes all CONTROL to control
 			case READY:
-				String MEM_STR = input("Swipe member card (press <enter> to cancel): ");
-				if (MEM_STR.length() == 0) {
-					CONTROL.cancel();
+				String memberCardNo = input("Swipe member card (press <enter> to cancel): "); // change made from MEM_STR to memberCardNo
+				if (memberCardNo.length() == 0) {
+					comtrol.cancel();
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(MEM_STR).intValue();
-					CONTROL.Swiped(Member_ID);
+					int Member_ID = Integer.valueOf(memberCardNo).intValue();
+					comtrol.Swiped(Member_ID);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
@@ -64,19 +64,19 @@ public class BorrowBookUI {
 				
 			case RESTRICTED:
 				input("Press <any key> to cancel");
-				CONTROL.cancel();
+				comtrol.cancel();
 				break;
 			
 				
 			case SCANNING:
-				String Book_Str = input("Scan Book (<enter> completes): ");
-				if (Book_Str.length() == 0) {
-					CONTROL.Complete();
+				String bookScan = input("Scan Book (<enter> completes): "); //changes Book_Str to bookscan and changes made on further as well.
+				if (bookScan.length() == 0) {
+					comtrol.Complete();
 					break;
 				}
 				try {
-					int BiD = Integer.valueOf(Book_Str).intValue();
-					CONTROL.Scanned(BiD);
+					int bookId = Integer.valueOf(bookScan).intValue(); // changes from BID to bookId
+					comtrol.Scanned(bookId);
 					
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id");
@@ -85,12 +85,12 @@ public class BorrowBookUI {
 					
 				
 			case FINALISING:
-				String Ans = input("Commit loans? (Y/N): ");
-				if (Ans.toUpperCase().equals("N")) {
-					CONTROL.cancel();
+				String answer = input("Commit loans? (Y/N): "); // Ans to answer
+				if (answer.toUpperCase().equals("N")) {
+					comtrol.cancel();
 					
 				} else {
-					CONTROL.Commit_LOans();
+					comtrol.commitLoan(); //changes made on Commit_Loan to commitLoan
 					input("Press <any key> to complete ");
 				}
 				break;
@@ -103,13 +103,13 @@ public class BorrowBookUI {
 				
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("BorrowBookUI : unhandled state :" + StaTe);			
+				throw new RuntimeException("BorrowBookUI : unhandled state :" + state);		// change in staTe to state	
 			}
 		}		
 	}
 
 
-	public void Display(Object object) {
+	public void display(Object object) { // change on Display to display.
 		output(object);		
 	}
 

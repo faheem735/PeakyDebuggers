@@ -2,64 +2,64 @@ import java.io.Serializable;
 
 
 @SuppressWarnings("serial")
-public class book implements Serializable {
+public class Book implements Serializable {
 	
 	private String title; // changes variable names to title from TITLE - sudeep-13/8(13:00)
 	private String author; // changes variable names to author from AUTHOR
 	private String phoneNo; // changes variable names to phoneNo from CALLNO
-	private int bookId;     // changes variable names to bookId from ID
+	private int bookId;     // changes variable names to id from bookId
 	
-	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
-	private STATE State;
+	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED }; //change STATE to State
+	private state state; // changes from State to state - sudeep- 13/8 (13:00)
 	
-	
-	public book(String author, String title, String callNo, int id) {
-		this.AUTHOR = author;
-		this.TITLE = title;
-		this.CALLNO = callNo;
-		this.ID = id;
-		this.State = STATE.AVAILABLE;
+	// changed all the upper case  variables to lowercase variable. 
+	public book(String author, String title, String phoneNO, int bookId) {
+		this.author = author;
+		this.title = title;
+		this.phoneNo = phoneNO;
+		this.bookId = bookId;
+		this.State = State.AVAILABLE;
 	}
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Book: ").append(ID).append("\n")
-		  .append("  Title:  ").append(TITLE).append("\n")
-		  .append("  Author: ").append(AUTHOR).append("\n")
-		  .append("  CallNo: ").append(CALLNO).append("\n")
+		sb.append("Book: ").append(bookId).append("\n")
+		  .append("  Title:  ").append(title).append("\n")
+		  .append("  Author: ").append(author).append("\n")
+		  .append("  phoneNO: ").append(phoneNo).append("\n")
 		  .append("  State:  ").append(State);
 		
 		return sb.toString();
 	}
 
-	public Integer ID() {
-		return ID;
+	public Integer bookId() {// ID ro bookId
+		return bookId;
+	}
+	// changes TITLE to title
+	public String title() {
+		return title;
 	}
 
-	public String TITLE() {
-		return TITLE;
-	}
 
-
-	
+	// changes STATE to state7
 	public boolean AVAILABLE() {
-		return State == STATE.AVAILABLE;
+		return State == state.AVAILABLE;
 	}
 
 	
-	public boolean On_loan() {
-		return State == STATE.ON_LOAN;
+	public boolean onLoan() { // changes form On_loan to onLoan
+		return State == state.ON_LOAN;
 	}
 
 	
-	public boolean IS_Damaged() {
-		return State == STATE.DAMAGED;
+	public boolean isDamaged() { // change from IS_Damaged to isDamaged
+		return State == state.DAMAGED;
 	}
 
 	
 	public void Borrow() {
-		if (State.equals(STATE.AVAILABLE)) {
-			State = STATE.ON_LOAN;
+		if (State.equals(state.AVAILABLE)) {
+			State = state.ON_LOAN;
 		}
 		else {
 			throw new RuntimeException(String.format("Book: cannot borrow while book is in state: %s", State));
@@ -69,12 +69,12 @@ public class book implements Serializable {
 
 
 	public void Return(boolean DAMAGED) {
-		if (State.equals(STATE.ON_LOAN)) {
+		if (State.equals(state.ON_LOAN)) {
 			if (DAMAGED) {
-				State = STATE.DAMAGED;
+				State = state.DAMAGED;
 			}
 			else {
-				State = STATE.AVAILABLE;
+				State = state.AVAILABLE;
 			}
 		}
 		else {
@@ -84,8 +84,8 @@ public class book implements Serializable {
 
 	
 	public void Repair() {
-		if (State.equals(STATE.DAMAGED)) {
-			State = STATE.AVAILABLE;
+		if (State.equals(state.DAMAGED)) {
+			State = state.AVAILABLE;
 		}
 		else {
 			throw new RuntimeException(String.format("Book: cannot repair while book is in state: %s", State));
