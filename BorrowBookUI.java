@@ -3,18 +3,18 @@ import java.util.Scanner;
 
 public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 	
-	public static enum UserInterfaceState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };// change UI_STATE to UserInterfaceState
-	// changes all the variables to the lowercase and camelback
-	private BorrowBookControl control; // change to control
+	public static enum UserInterfaceState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };// change UI_STATE to UserInterfaceState by sudeep on 20/8
+	// changes all the variables to the lowercase and camelback by sudeep on 20/8
+	private BorrowBookControl control; // change to control by sudeep on 20/8
 	private Scanner input;
 	private UserInterfaceState state;
 
 	
-	public borrowBookUi(BorrowBookControl control) {// BorrowbookUI to borrowBookUi
-		this.control = control; // CONTROL to control
+	public borrowBookUi(BorrowBookControl control) {//  method name change from BorrowbookUI to borrowBookUiby sudeep on 20/8
+		this.control = control; // CONTROL to control by sudeep on 20/8
 		input = new Scanner(System.in);
-		state = UserInterfaceState.INITIALISED; // change UI_STATE to UserInterfaceState
-		control.setUserInterface(this); // change to setUserInterface to ustUI
+		state = UserInterfaceState.INITIALISED; // change UI_STATE to UserInterfaceState by sudeep on 20/8
+		control.setUserInterface(this); // change to setUserInterface to ustUI by sudeep on 20/8
 	}
 
 	
@@ -29,8 +29,8 @@ public class BorrowBookUi {// change to BorrowBookUi from BorrowBookUI
 	}
 	
 			
-	public void setState(UserInterfaceState state) { //change set_State to setState and UI_STATE to UserInterfaceState and STATE to state
-		this.state = state;// change StaTe and STATE to state
+	public void setState(UserInterfaceState state) { //change set_State to setState and UI_STATE to UserInterfaceState and STATE to state by sudeep on 20/8
+		this.state = state;// change StaTe and STATE to state by sudeep on 20/8
 	}
 
 	
