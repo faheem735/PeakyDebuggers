@@ -3,28 +3,28 @@ import java.util.List;
 
 public class BorrowBookControl {
 	
-	private BorrowBookUi userInterface; // changes from BorrowBookUI to BorrowBookUi 
+	private BorrowBookUi userInterface; // changes from BorrowBookUI to BorrowBookUi  by sudeep on 21/8
 	
-	private Library liberary; // change on the name
-	private Member member; // Change m to member
+	private Library liberary; // change on the name by sudeep on 21/8
+	private Member member; // Change m to member by sudeep on 21/8
 	private enum ControlState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };// changes the enum name from CONTROL_STATE to ControlState.
 	private ControlState state;
 	
-	private List<book> pending; //changes to pending from PENDING
-	private List<loan> completed; // changes to completed from COMPLETED
-	private Book book; //changes Book book from book BOOK
+	private List<book> pending; //changes to pending from PENDING  by sudeep on 21/8
+	private List<loan> completed; // changes to completed from COMPLETED by sudeep on 21/8
+	private Book book; //changes Book book from book BOOK by sudeep on 21/8
 	
 	
 	public BorrowBookControl() {
-		this.liberary = liberary.INSTANCE(); // changes the LIBERARY to liberary
-		state = ControlState.INITIALISED; //CONTROL_STATE to COntrolState changes made
+		this.liberary = liberary.INSTANCE(); // changes the LIBERARY to liberary by sudeep on 21/8
+		state = ControlState.INITIALISED; //CONTROL_STATE to COntrolState changes made by sudeep on 21/8
 	}
 	
 
-	public void setUserInterface(BorrowBookUi userInterface) { // change made on setuI to setUi and BorrowBookUI to BorrowBookUi and UI to userInterface
+	public void setUserInterface(BorrowBookUi userInterface) { // change made on setuI to setUi and BorrowBookUI to BorrowBookUi and UI to userInterface by sudeep on 21/8
 	
-	// changes made on CONTROL_STATE to ControlState
-		if (!state.equals(ControlState.INITIALISED)) { // added { afer the if condition
+	// changes made on CONTROL_STATE to ControlState by sudeep on 21/8
+		if (!state.equals(ControlState.INITIALISED)) { // added { afer the if condition by sudeep on 21/8
 			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
 		// UI changes to userInterface on all	
 		this.userInterface = userInterface;
