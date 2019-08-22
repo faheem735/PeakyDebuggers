@@ -5,11 +5,11 @@ import java.io.Serializable;
 public class Book implements Serializable {
 	
 	private String title; // changes variable names to title from TITLE - sudeep-13/8(13:00)
-	private String author; // changes variable names to author from AUTHOR
-	private String phoneNo; // changes variable names to phoneNo from CALLNO
-	private int bookId;     // changes variable names to id from bookId
+	private String author; // changes variable names to author from AUTHOR sudeep-13/8(13:00)
+	private String phoneNo; // changes variable names to phoneNo from CALLNO sudeep-13/8(13:00)
+	private int bookId;     // changes variable names to id from bookId sudeep-13/8(13:00)
 	
-	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED }; //change STATE to State
+	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED }; //change STATE to State sudeep-13/8(13:00)
 	private state state; // changes from State to state - sudeep- 13/8 (13:00)
 	
 	// changed all the upper case  variables to lowercase variable. 
@@ -68,7 +68,7 @@ public class Book implements Serializable {
 	}
 
 
-	public void returndamage(boolean DAMAGED) {
+	public void returnDamage(boolean DAMAGED) { // change from returndamage to returnDamage  by sudeep on 22/08
 		if (State.equals(state.ON_LOAN)) {
 			if (DAMAGED) {
 				state = State.DAMAGED; // changes state to State and State to state- by sudeep
@@ -83,7 +83,7 @@ public class Book implements Serializable {
 	}
 
 	
-	public void Repair() {
+	public void repair() {  // change from Repair to repair by sudeep on 22/08
 		if (state.equals(State.DAMAGED)) {
 			state = State.AVAILABLE;
 		}
